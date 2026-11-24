@@ -1,0 +1,1356 @@
+/* ==========================================================================
+   1. ПЕРЕМЕННЫЕ ТЕМ И БАЗОВЫЕ НАСТРОЙКИ (СБРОС СТИЛЕЙ И ШРИФТЫ)
+   ========================================================================== */
+:root {
+    /* ТЁМНАЯ ТЕМА (ПО ДЕФОЛТУ) */
+    --bg-main: #0a0a0a;
+    --bg-blocks: #111111;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.08);
+}
+
+body.light-theme {
+    /* СВЕТЛАЯ ТЕМА (ПРИ ПЕРЕКЛЮЧЕНИИ) */
+    --bg-main: #ffffff;
+    --bg-blocks: #f9f9f9;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #e5e5e5;
+    --card-border: #e5e5e5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background-color: var(--bg-main) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Плавная смена темы */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ СВЕРХУ СПРАВА */
+.theme-toggle-btn {
+    background: var(--bg-blocks);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 20px;
+}
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+/* ==========================================================================
+   2. ГЛАВНЫЙ РАЗДЕЛ (HERO / HEADER) — ТВОЙ НАСТРОЕННЫЙ МАКЕТ
+   ========================================================================== */
+.hero {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding: 60px 0;
+    color: #ffffff; 
+    position: relative; /* удерживает ноутбук внутри секции */
+    
+    background-color: #0a0a0a;
+    background-image: url('background.png'); 
+    background-size: cover;       
+    background-position: center bottom;  
+    background-repeat: no-repeat; 
+    overflow: hidden; /* Скрывает излишки, если ноут чуть зайдет за края */
+}
+
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ ТЕКСТА (ФЛЕКС-СЕТКА ВМЕСТО АБСОЛЮТА)
+   ========================================================================== */
+
+/* Превращаем весь первый экран в удобную флекс-коробочку */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;       /* Центрируем содержимое по вертикали */
+    justify-content: flex-start; /* Прижимаем контент к левому краю */
+    min-height: calc(100vh - 120px); /* Занимает весь экран за вычетом отступов */
+    width: 100%;
+}
+
+.hero-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;               
+    
+    position: absolute !important; 
+    left: 80px !important;              
+    
+    /* ОПУСКАЕМ ЕЩЁ ЧУТЬ-ЧУТЬ ДЛЯ ИДЕАЛЬНОГО БАЛАНСА: */
+    top: 57% !important;                /* Теперь расстояние сверху и снизу будет одинаковым */
+    
+    transform: translateY(-50%) !important;
+    width: 633px !important;            
+    max-width: 40vw !important;         
+    z-index: 99 !important;             
+}
+
+
+
+
+
+/* Главный заголовок по точным параметрам из Figma */
+.main-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 70px;       /* Точный размер из Figma */
+    font-weight: 700;          /* Начертание Bold */
+    line-height: 0.9;          /* Высота строки 90% прижмет строки друг к другу */
+    letter-spacing: -2.26px;   /* Межбуквенный интервал -2% */
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Подзаголовок конкурса */
+.main-subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Оформление для списка с тире */
+.features-list {
+    list-style: none; 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;        
+    margin: 5px 0;
+}
+
+.features-list li {
+    font-size: 16px;
+    font-weight: 500;
+    color: #e0e0e0;   
+    display: flex;
+    align-items: flex-start; 
+    gap: 12px;        
+    line-height: 1.4;
+}
+
+.features-list li::before {
+    content: "—";     
+    color: rgba(255, 255, 255, 0.4); 
+    font-weight: 400;
+    flex-shrink: 0;   
+}
+
+/* Оформление дополнительного текста с линией */
+.main-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #a0a0a0;       
+    border-left: 2px solid rgba(255, 255, 255, 0.25); 
+    padding-left: 15px;   
+    margin: 10px 0;
+}
+
+/* Крупная кнопка "Подробнее о конкурсе" */
+.btn-more {
+    display: inline-block !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 16px 40px !important;   
+    font-size: 16px !important;      
+    border-radius: 40px !important;  
+    font-weight: 600 !important;
+    letter-spacing: -0.2px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.1) !important; 
+    transition: all 0.25s ease-in-out !important; 
+}
+
+.btn-more:hover {
+    background: #f0f0f0 !important;
+    transform: translateY(-3px) !important; 
+    box-shadow: 0 6px 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Картинка ноутбука (ЖЕСТКО ПРИЖАТА К НИЗУ ЭКРАНА) */
+.hero-laptop-img {
+    position: absolute;
+    right: 0; 
+    bottom: 0; /* Прижали нижний срез ровно к нижней границе монитора */
+    width: 53vw; /* Оптимальный масштаб */
+    max-width: 900px;
+    height: auto;
+    z-index: 1; 
+    object-fit: contain;
+    transform: none; 
+}
+
+
+/* ==========================================================================
+   ЖЕСТКАЯ ФИКСАЦИЯ ПАНЕЛИ НАВИГАЦИИ С ЭФФЕКТОМ СТЕКЛА (STICKY BLUR NAVBAR)
+   ========================================================================== */
+.top-navbar {
+    position: fixed !important; /* Намертво фиксируем вверху экрана */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 90px !important;    /* Фиксированная высота панели */
+    padding: 0 60px !important; 
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+    box-sizing: border-box !important;
+    z-index: 99999 !important;  /* Всегда поверх абсолютно всего контента */
+    
+    /* ТРЕНДОВЫЙ ЭФФЕКТ МАТОВОГО СТЕКЛА */
+    background-color: rgba(10, 10, 10, 0.7) !important; /* Полупрозрачный темный фон по дефолту */
+    backdrop-filter: blur(12px) !important;              /* Размытие проплывающего снизу песка и текста */
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important; /* Тонкая технологичная рамка снизу */
+    
+    transform: none !important; 
+    transition: background-color 0.4s ease, border-color 0.4s ease !important;
+}
+
+/* Логотип */
+.top-logo {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    color: #ffffff !important; /* На тёмной теме белый */
+    letter-spacing: -0.5px !important;
+    transition: color 0.4s ease !important;
+}
+
+/* Капсула с кнопками меню */
+.top-nav-links {
+    display: flex !important;
+    flex-direction: row !important; 
+    list-style: none !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    padding: 4px 6px !important;
+    border-radius: 80px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin: 0 !important;
+    transition: background-color 0.4s, border-color 0.4s !important;
+}
+
+.top-nav-links li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-nav-links a {
+    padding: 8px 24px !important;
+    display: block !important;
+    border-radius: 40px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.6) !important; /* Приглушенный текст в темноте */
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+}
+
+/* Активные элементы и ховеры кнопок меню автоматически инвертируются */
+.top-nav-links a.active, 
+.top-nav-links a:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Коррекция верхнего отступа хедера, чтобы зафиксированная шапка не перекрывала заголовок */
+.hero {
+    padding-top: 140px !important; 
+}
+
+
+
+/* ==========================================================================
+   3. ИНФОРМАЦИОННЫЕ БЛОКИ (МЕНЯЮТ ЦВЕТ ПРИ СМЕНЕ ТЕМЫ)
+   ========================================================================== */
+.main-content {
+    background-color: var(--bg-main) !important;
+    color: var(--text-primary) !important;
+    position: relative;
+    z-index: 5;
+    transition: background-color 0.4s ease;
+}
+
+.section-block {
+    background-color: var(--bg-main) !important;
+    padding: 100px 0;
+    transition: background-color 0.4s ease;
+}
+
+.bg-light {
+    background-color: var(--bg-blocks) !important;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.4s ease;
+}
+
+.section-grid-2 {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+.section-grid-2.border-top {
+    border-top: 1px solid var(--border-color) !important;
+    padding-top: 60px;
+}
+
+.meta-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: var(--text-primary) !important;
+}
+
+.lead-text {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    color: var(--text-primary) !important;
+}
+
+/* ЗАДАЧИ КОНКУРСА (Исправлено: Номера строго сбоку) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px;
+    opacity: 1 !important;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: row;      
+    align-items: flex-start;  
+    gap: 16px;                
+}
+
+.info-card .card-num {
+    font-size: 16px;          
+    font-weight: 700;
+    color: #00ff66 !important; /* Яркий IT-акцент */
+    flex-shrink: 0;           
+    min-width: 20px;          
+}
+
+.info-card p {
+    font-size: 16px;
+    color: var(--text-secondary) !important;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.custom-bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.custom-bullet-list li {
+    font-size: 16px;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.5;
+    color: var(--text-secondary) !important;
+}
+
+.custom-bullet-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.note-text {
+    font-size: 15px;
+    color: var(--text-secondary) !important;
+    border-left: 2px solid var(--text-primary);
+    padding-left: 16px;
+    line-height: 1.5;
+}
+
+/* СТРУКТУРА ОПИСАНИЯ ПРОЕКТА (Исправлено: Чистые цифры без кружков) */
+.numbered-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px 40px;
+    opacity: 1 !important;
+}
+
+.list-item {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+        gap: 16px;
+    color: var(--text-secondary) !important;
+}
+
+.list-item span {
+    font-size: 16px;
+    font-weight: 700;
+    width: auto;
+    height: auto;
+    border: none;             /* Убрали круглую рамку */
+    border-radius: 0;
+    display: inline;
+    color: #00ff66 !important;
+}
+
+/* Секции конкурса */
+.section-header-clean {
+    margin-bottom: 50px;
+}
+
+.section-header-clean h2 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    color: var(--text-primary) !important;
+}
+
+.section-header-clean p {
+    color: var(--text-secondary) !important;
+    font-size: 16px;
+}
+
+.sections-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+    opacity: 1 !important;
+}
+
+.visual-card {
+    width: 100% !important;
+    min-height: 180px !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    text-decoration: none !important;
+    transition: transform 0.2s;
+}
+
+.visual-card:hover {
+    transform: translateY(-5px);
+}
+
+.visual-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff !important; /* Названия на цветных плитках всегда белые */
+    line-height: 1.2;
+}
+
+.tone-1 { background-color: #4f46e5; }
+.tone-2 { background-color: #059669; }
+.tone-3 { background-color: #e11d48; }
+.tone-4 { background-color: #d97706; }
+.tone-5 { background-color: #7c3aed; }
+.tone-6 { background-color: #db2777; }
+.tone-7 { background-color: #0d9488; }
+.tone-8 { background-color: #ea580c; }
+
+/* Критерии и Категории */
+.expertise-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.exp-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary) !important;
+}
+
+.exp-item p {
+    font-size: 15px;
+    color: var(--text-secondary) !important;
+    line-height: 1.5;
+}
+
+.categories-block {
+    display: flex;
+    gap: 30px;
+}
+
+.cat-card {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid var(--card-border) !important;
+    background-color: var(--bg-blocks) !important;
+    border-radius: 16px;
+}
+
+.cat-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary) !important;
+}
+
+.cat-card p {
+    font-size: 15px;
+    color: var(--text-secondary) !important;
+}
+
+/* Временная шкала (Timeline) */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-color) !important;
+    padding-left: 30px;
+    gap: 40px;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    background-color: #00ff66 !important;
+    border-radius: 50%;
+}
+
+.tl-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00ff66 !important;
+    margin-bottom: 6px;
+}
+
+.tl-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary) !important;
+}
+
+.tl-content p {
+    font-size: 15px;
+    color: var(--text-secondary) !important;
+    max-width: 700px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. КОМПАКТНЫЙ ЧЕРНЫЙ ПОДВАЛ (FOOTER)
+   ========================================================================== */
+.contacts-section {
+    background-color: #000000 !important; /* Футер всегда стильный черный */
+    color: #ffffff !important;
+    padding: 60px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    z-index: 10;
+}
+
+.contacts-wrapper {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contacts-main h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: #ffffff !important;
+    letter-spacing: -0.5px;
+}
+
+.address {
+    font-size: 14px;
+    color: #cccccc !important;
+    margin-bottom: 20px;
+}
+
+.phones-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+}
+
+.phones-group p {
+    font-size: 15px;
+    color: #888888;
+}
+
+.phones-group a, .personal-phone {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.mail-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+}
+
+.contacts-person {
+    padding-left: 40px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contacts-person h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #ffffff !important;
+}
+
+.personal-phone {
+    font-size: 18px;
+    color: #00ff66 !important;
+}
+
+.phones-group a:hover, .personal-phone:hover {
+    opacity: 0.7;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .contacts-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .contacts-person {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .phones-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ==========================================================================
+   ЭФФЕКТНОЕ НАВЕДЕНИЕ НА КАРТОЧКИ СЕКЦИЙ (HOVER EFFECTS)
+   ========================================================================== */
+
+/* Базовое состояние карточки */
+.visual-card {
+    width: 100% !important;
+    min-height: 180px !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    text-decoration: none !important;
+    
+    position: relative;
+    overflow: hidden;
+    
+    /* Плавный переход для ВСЕХ измененных свойств за 0.3 секунды */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Эффект при наведении курсора: карточка мягко идет вверх и масштабируется */
+.visual-card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+}
+
+/* Индивидуальные неоновые тени под цвет каждой карточки при наведении */
+.visual-card.tone-1:hover { box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4) !important; }
+.visual-card.tone-2:hover { box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4) !important; }
+.visual-card.tone-3:hover { box-shadow: 0 12px 30px rgba(225, 29, 72, 0.4) !important; }
+.visual-card.tone-4:hover { box-shadow: 0 12px 30px rgba(217, 119, 6, 0.4) !important; }
+.visual-card.tone-5:hover { box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4) !important; }
+.visual-card.tone-6:hover { box-shadow: 0 12px 30px rgba(219, 39, 119, 0.4) !important; }
+.visual-card.tone-7:hover { box-shadow: 0 12px 30px rgba(13, 148, 136, 0.4) !important; }
+.visual-card.tone-8:hover { box-shadow: 0 12px 30px rgba(234, 88, 12, 0.4) !important; }
+
+
+/* ==========================================================================
+   УВЕЛИЧЕННАЯ КНОПКА И МОДАЛЬНЫЕ ОКНА РЕГИСТРАЦИИ
+   ========================================================================== */
+
+/* Делаем главную кнопку еще больше */
+.btn-more {
+    padding: 20px 52px !important; /* Сделали массивнее и шире */
+    font-size: 18px !important;     /* Увеличили шрифт */
+    letter-spacing: -0.2px !important;
+}
+
+/* Фон-затемнение вокруг окна */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px); /* Размытие заднего плана */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Окно становится видимым */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Сама коробочка диалогового окна */
+.modal-content-box {
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content-box {
+    transform: translateY(0);
+}
+
+/* Кнопка закрытия (крестик) */
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #888888;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal-close-btn:hover { color: #ffffff; }
+
+.modal-content-box h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.modal-sub {
+    color: #888888;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+/* Поля ввода формы */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.input-group label {
+    font-size: 13px;
+    color: #aaa;
+    font-weight: 600;
+}
+.input-group input {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.input-group input:focus {
+    border-color: #00ff66; /* Неоновая подсветка активного поля */
+}
+
+/* Кнопка внутри модалки */
+.modal-submit-btn {
+    width: 100%;
+    background: #00ff66; /* Яркий IT-цвет */
+    color: #000000;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 10px;
+}
+.modal-submit-btn:hover {
+    background: #00dd55;
+    transform: translateY(-2px);
+}
+
+/* Окно благодарности */
+.thanks-box { text-align: center; }
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 255, 102, 0.1);
+    color: #00ff66;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto 20px auto;
+}
+.thanks-box p { color: #aaa; font-size: 15px; margin-bottom: 24px; line-height: 1.4; }
+
+/* ==========================================================================
+   ЕДИНЫЙ УНИВЕРСАЛЬНЫЙ КЛАСС ДЛЯ ВСЕХ КНОПОК РЕГИСТРАЦИИ (СТРОГО ПО ЦЕНТРУ)
+   ========================================================================== */
+.btn-reg-center {
+    /* ТОЧНОЕ КОПИРОВАНИЕ ПАРАМЕТРОВ КНОПКИ С МЕЙНА */
+    display: block !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 16px 40px !important;   /* Точные оригинальные отступы хедера */
+    font-size: 16px !important;
+    border-radius: 40px !important;  
+    font-weight: 600 !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: -0.2px !important;
+    text-decoration: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.1) !important;
+    
+    /* АВТОМАТИЧЕСКОЕ ЖЕСТКОЕ ЦЕНТРИРОВАНИЕ НА СТРАНИЦЕ */
+    margin: 50px auto 0 auto !important; /* Выравнивает кнопку ровно по центру блока */
+    width: max-content !important;       /* Не дает кнопке растягиваться на весь экран */
+    
+    /* ОРИГИНАЛЬНАЯ АНИМАЦИЯ ХОВЕРА С МЕЙНА */
+    transition: all 0.25s ease-in-out !important; 
+}
+
+/* Эффект при наведении (точь-в-точь как на главном экране) */
+.btn-reg-center:hover {
+    background: #f0f0f0 !important;
+    transform: translateY(-3px) !important; 
+    box-shadow: 0 6px 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* КНОПКИ НА СВЕТЛОЙ ТЕМЕ: Меняем цвет на инверсивный чёрный для максимальной видимости */
+body.light-theme .btn-reg-center {
+    background: #000000 !important; /* Кнопка становится солидной чёрной */
+    color: #ffffff !important;      /* Текст ярко-белый */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Ховер для светлой темы */
+body.light-theme .btn-reg-center:hover {
+    background: #1a1a1a !important;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ==========================================================================
+   АДАПТИВНЫЕ МОДАЛЬНЫЕ ОКНА (ИНВЕРСИЯ ЦВЕТОВ ДЛЯ СВЕТЛОЙ ТЕМЫ)
+   ========================================================================== */
+
+/* Когда активна светлая тема: перекрашиваем коробку модалки в белый */
+body.light-theme .modal-content-box {
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    color: #000000 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Тексты модалки на светлой теме */
+body.light-theme .modal-content-box h2 {
+    color: #000000 !important;
+}
+body.light-theme .modal-sub,
+body.light-theme .thanks-box p,
+body.light-theme .input-group label {
+    color: #666666 !important;
+}
+
+/* Поля ввода (инпуты) на светлой теме */
+body.light-theme .input-group input {
+    background: #f5f5f5 !important;
+    border: 1px solid #d1d1d1 !important;
+    color: #000000 !important;
+}
+body.light-theme .input-group input:focus {
+    border-color: #00ff66 !important; /* Оставляем неоновый фокус для стиля */
+}
+
+/* Крестик закрытия на светлой теме */
+body.light-theme .modal-close-btn {
+    color: #aaaaaa !important;
+}
+body.light-theme .modal-close-btn:hover {
+    color: #000000 !important;
+}
+
+/* Затемнение фона вокруг окон на светлой теме делаем чуть мягче */
+body.light-theme .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* --------------------------------------------------------------------------
+   МОБИЛЬНАЯ ВЕРСИЯ (Экран меньше 768px — Смартфоны)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .section-block {
+        padding: 60px 0;
+    }
+
+    /* ИСПРАВЛЕНИЕ: Никаких жестких белых блоков и relative-переносов! */
+    .top-navbar {
+        position: absolute !important; /* Оставляем висеть вверху */
+        top: 20px !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Выстраиваем логотип и меню друг под другом */
+        align-items: center !important;
+        gap: 16px !important;
+        background: transparent !important; /* Убираем этот ядовитый белый фон */
+        border-bottom: none !important;
+        z-index: 999 !important;
+    }
+
+    .top-navbar > div {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* Овальная капсула меню на мобилке */
+    .top-nav-links {
+        background-color: rgba(26, 26, 26, 0.9) !important; /* Темная полупрозрачная плашка */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding: 4px !important;
+    }
+
+    /* Сама кнопка переключения темы на мобилке */
+    .theme-toggle-btn {
+        margin-left: 0 !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important; /* Текст кнопки всегда белый на мобильном главном экране */
+        padding: 8px 20px !important;
+        font-size: 13px !important;
+        width: auto !important; /* Кнопка не будет растягиваться на весь экран */
+    }
+
+        /* ГЛАВНЫЙ ЭКРАН (Hero) — МОБИЛЬНЫЙ ФИКС ДЛЯ КНОПКИ И НОУТБУКА */
+    .hero {
+        min-height: auto !important; /* Убираем жесткую высоту, пускай растягивается по контенту */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        padding-top: 180px !important; /* Отступ под меню сверху */
+        padding-bottom: 40px !important; /* Безопасный отступ снизу после кнопки */
+        position: relative !important;
+    }
+
+    .hero-content {
+        min-height: auto !important;
+        margin-bottom: 0 !important;
+        display: flex !important;
+        flex-direction: column !important; /* Выстраиваем элементы строго сверху вниз */
+        width: 100% !important;
+    }
+
+    /* Текстовый блок на мобилке */
+    .hero-text-block {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        z-index: 10 !important;
+    }
+
+    /* МЕНЯЕМ ПОРЯДОК: Заставляем кнопку в коде мобилки упасть под картинку */
+    .btn-more {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 16px 32px !important;
+        margin-top: 30px !important;
+        order: 3 !important; /* Сдвигаем в самый низ текстового контейнера */
+    }
+
+    /* Картинка ноутбука на мобилке падает ровно под список с тире */
+    .hero-laptop-img {
+        position: relative !important; /* УБРАЛИ absolute, теперь ноут не перекрывает кнопку! */
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin-top: 30px !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        opacity: 0.95 !important;
+        order: 2 !important; /* Становится строго между списком и кнопкой */
+        
+        /* МАГИЯ МАСКИ: Аккуратно затеняем экран ноутбука, чтобы спрятать чужой английский текст */
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 40%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 40%) !important;
+    }
+
+
+    /* ЭЛЕМЕНТЫ КОНТЕНТА НИЖЕ ХЕДЕРА */
+    .section-grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .section-grid-2.border-top {
+        padding-top: 40px !important;
+    }
+
+    .meta-title h2 {
+        font-size: 26px !important;
+    }
+
+    .lead-text {
+        font-size: 18px !important;
+    }
+
+    .cards-grid, .numbered-list-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .sections-visual-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .visual-card {
+        min-height: 120px !important;
+        border-radius: 12px !important;
+    }
+
+    .categories-block {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    .timeline-container {
+        padding-left: 20px !important;
+        gap: 30px !important;
+    }
+    
+    .timeline-item::before {
+        left: -26px !important;
+    }
+
+    .btn-reg-center {
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 30px !important;
+    }
+
+    .modal-content-box {
+        padding: 24px !important;
+        margin: 0 16px !important;
+        border-radius: 16px !important;
+    }
+
+    .contacts-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .contacts-person {
+        padding-left: 0 !important;
+        border-left: none !important;
+        padding-top: 24px !important;
+        border-top: 1px solid var(--border-color) !important;
+    }
+
+    .phones-group {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+}
+
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ КНОПКИ СМЕНЫ ТЕМЫ НА МОБИЛКЕ
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Возвращаем кнопке смены темы идеальную видимость в обоих режимах */
+    
+    /* ТЕМНАЯ ТЕМА (ПО ДЕФОЛТУ): Белые буквы на полупрозрачном сером фоне */
+    .theme-toggle-btn {
+        margin-left: 0 !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important; /* На тёмной теме текст ВСЕГДА белый */
+        padding: 10px 24px !important;
+        font-size: 13px !important;
+        width: auto !important;
+        display: inline-block !important;
+    }
+
+}
+
+/* ==========================================================================
+   ФИНАЛЬНЫЕ СТИЛИ СТРАНИЦЫ НОВОСТЕЙ С КАРТИНКАМИ
+   ========================================================================== */
+.news-main-padding {
+    padding-top: 150px !important;
+    min-height: 80vh;
+}
+
+.news-header-space {
+    margin-bottom: 50px;
+}
+
+.news-vertical-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Зазоры между новостями */
+}
+
+/* Горизонтальная карточка новости */
+.news-card-horizontal {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Левая колонка под картинку, правая под текст */
+    gap: 40px;
+    background-color: var(--bg-blocks) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 20px;
+    padding: 30px;
+    align-items: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.news-card-horizontal:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Обертка для картинок-заглушек */
+.news-image-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+}
+
+.news-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Картинка заполнит блок без искажений */
+    transition: transform 0.3s ease;
+}
+
+.news-card-horizontal:hover .news-image-wrapper img {
+    transform: scale(1.04); /* Легкий зум картинки при наведении */
+}
+
+/* Контент текста новости */
+.news-horizontal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.news-date {
+    font-size: 13px;
+    color: #00ff66 !important; /* Наш фирменный зеленый IT-цвет для даты */
+    font-weight: 600;
+}
+
+.news-horizontal-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.news-horizontal-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary) !important;
+    margin: 0;
+}
+
+/* АДАПТИВНОСТЬ НОВОСТЕЙ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 768px) {
+    .news-card-horizontal {
+        grid-template-columns: 1fr !important; /* На мобилке картинка падает над текстом */
+        gap: 20px;
+        padding: 20px;
+    }
+    .news-image-wrapper {
+        height: 160px;
+    }
+    .news-horizontal-content h3 {
+        font-size: 20px;
+    }
+}
+
+/* ==========================================================================
+   УМНАЯ ШАПКА: ТЁМНАЯ НА МЕЙНЕ, СВЕТЛАЯ ПОСЛЕ НЕГО
+   ========================================================================== */
+
+/* Базовое состояние (всегда тёмное стекло на тёмной теме и внутри мейна) */
+.top-navbar {
+    background-color: rgba(10, 10, 10, 0.85) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: background-color 0.35s ease, border-color 0.35s ease !important;
+}
+
+.top-navbar .top-logo,
+.top-navbar .top-logo a {
+    color: #ffffff !important;
+    transition: color 0.35s ease !important;
+}
+
+.top-navbar .top-nav-links {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.top-navbar .top-nav-links a {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.top-navbar .top-nav-links a.active,
+.top-navbar .top-nav-links a:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Кнопка смены темы внутри тёмной шапки */
+.top-navbar .theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* СВЕТЛЫЙ РЕЖИМ ШАПКИ (включается ТОЛЬКО после выхода из мейна) */
+body.light-theme .top-navbar[data-scroll="scrolled"] {
+    background-color: rgba(255, 255, 255, 0.88) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-logo,
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-logo a {
+    color: #000000 !important;
+}
+
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-nav-links {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-nav-links a {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-nav-links a.active,
+body.light-theme .top-navbar[data-scroll="scrolled"] .top-nav-links a:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.light-theme .top-navbar[data-scroll="scrolled"] .theme-toggle-btn {
+    background: #f0f0f2 !important;
+    border: 1px solid #d1d1d6 !important;
+    color: #000000 !important;
+}
+
+.news-main-padding {
+    padding-top: 150px !important;
+    padding-bottom: 100px !important; /* Добавили воздух перед подвалом */
+    min-height: 80vh;
+}

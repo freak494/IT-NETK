@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТ-НЭТК-2027</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+        <!-- HEADER / HERO SECTION -->
+        <header class="hero" id="main-hero">
+    
+            <!-- Картинка ноутбука (внутри неё уже есть своё меню, тексты и кнопки) -->
+            <img src="laptop.png" alt="Laptop Preview" class="hero-laptop-img">
+
+            <div class="container">
+                <!-- НАВИГАЦИЯ НАД МЕЙНОМ -->
+                <nav class="top-navbar">
+                    <div class="top-logo">ИТ – НЭТК – 2027</div>
+                        <div style="display: flex; align-items: center;">
+                            <ul class="top-nav-links">
+                                <li><a href="#main-hero" class="active">О конкурсе</a></li>
+                                <li><a href="news.html">Новости</a></li>
+                            </ul>
+
+
+            <!-- Вот она, кнопка переключения -->
+            <button class="theme-toggle-btn" id="theme-toggle">☀️ Светлая тема</button>
+                        </div>
+                </nav>
+
+                <div class="hero-content"></div>
+                    <!-- Вот этот контейнер со всеми текстами, который встанет ровно слева -->
+            <div class="hero-text-block">
+                <h1 class="main-title">ИТ – НЭТК – 2027</h1>
+                
+                <h2 class="main-subtitle" style="font-size: 24px; margin: 15px 0; font-weight: 700; color: #ffffff;">
+                    Конкурс проектов в области информационных технологий
+                </h2>
+                
+                <!-- Список с галочками -->
+                <ul class="features-list">
+                    <li>Desktop, Web & Mobile разработка</li>
+                    <li>Командное или одиночное участие</li>
+                    <li>Реальные кейсы и практический опыт</li>
+                    <li>Ценные призы и дипломы в портфолио</li>
+                </ul>
+
+                <p class="main-description" style="margin: 20px 0; color: #cccccc; font-size: 16px; line-height: 1.5;">
+                    Покажи свои идеи, реализуй собственный проект и продемонстрируй свои навыки в мире IT!
+                </p>
+                
+                <!-- Кнопка -->
+                <button class="btn-more">Зарегистрироваться</button>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+        <!-- ОСНОВНАЯ ИНФОРМАЦИЯ О КОНКУРСЕ -->
+    <main id="about-details" class="main-content">
+        
+        <!-- ЦЕЛЬ И ЗАДАЧИ -->
+        <section class="section-block">
+            <div class="container">
+                <div class="section-grid-2">
+                    <div class="meta-title">
+                        <h2>Цель конкурса</h2>
+                    </div>
+                    <div class="meta-text">
+                        <p class="lead-text">Выявление творческого потенциала школьников и студентов в области информационных технологий и проектной деятельности.</p>
+                    </div>
+                </div>
+
+                <div class="section-grid-2 border-top">
+                    <div class="meta-title">
+                        <h2>Задачи конкурса</h2>
+                    </div>
+                    <div class="cards-grid">
+                        <div class="info-card">
+                            <span class="card-num">1</span>
+                            <p>Повышение мотивации к учёбе и углубление знаний в области современных IT.</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="card-num">2</span>
+                            <p>Активизация проектной деятельности школьников и студентов.</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="card-num">3</span>
+                            <p>Развитие творческих способностей и навыков самостоятельной работы через коллективную деятельность.</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="card-num">4</span>
+                            <p>Привитие навыков презентации себя и своих проектов.</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="card-num">5</span>
+                            <p>Автоматизация деятельности отдельных структурных подразделений учебных заведений и предприятий.</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="card-num">6</span>
+                            <p>Профориентационная работа среди школьников города Арзамаса.</p>
+                        </div>
+                   </div>
+                </div>
+                <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+            </div>
+        </section>
+
+        <!-- УСЛОВИЯ И СТРУКТУРА -->
+        <section class="section-block bg-light">
+            <div class="container">
+                <div class="section-grid-2">
+                    <div class="meta-title">
+                        <h2>Условия участия</h2>
+                    </div>
+                    <div class="meta-text">
+                        <ul class="custom-bullet-list">
+                            <li>Проекты могут быть созданы с помощью любых доступных программных и технических средств.</li>
+                            <li>Проекты могут быть выполнены индивидуально или группами не более 3 человек.</li>
+                            <li>Проект должен быть описан по стандартной схеме.</li>
+                        </ul>
+                        <p class="note-text">Защита проектной работы проводится в форме презентации проекта. Для иногородних участников возможна заочная форма участия.</p>
+                    </div>
+                </div>
+
+                <div class="section-grid-2 border-top">
+                    <div class="meta-title">
+                        <h2>Структура описания проекта</h2>
+                    </div>
+                    <div class="numbered-list-grid">
+                        <div class="list-item"><span>1</span> Обоснование выбора темы (проблемы).</div>
+                        <div class="list-item"><span>2</span> Цели и задачи проекта.</div>
+                        <div class="list-item"><span>3</span> Используемые методы исследования.</div>
+                        <div class="list-item"><span>4</span> Информационная база.</div>
+                        <div class="list-item"><span>5</span> Этапы выполнения проекта.</div>
+                        <div class="list-item"><span>6</span> Суть проекта (состав ПО, модули, средства создания).</div>
+                        <div class="list-item"><span>7</span> Категории пользователей.</div>
+                        <div class="list-item"><span>8</span> Описание практического использования проекта.</div>
+                        <div class="list-item"><span>9</span> Команда исполнителей.</div>
+                    </div>
+                </div>
+                <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+            </div>
+        </section>
+
+        <!-- СЕКЦИИ КОНКУРСА (Оформление как блок Projects) -->
+        <section class="section-block">
+            <div class="container">
+                <div class="section-header-clean">
+                    <h2>Секции конкурса</h2>
+                    <p>Представлены в виде ключевых направлений разработки и цифрового творчества</p>
+                </div>
+                <div class="sections-visual-grid">
+                    <div class="visual-card tone-1"><h3>Автоматизация организаций</h3></div>
+                    <div class="visual-card tone-2"><h3>Веб-разработка</h3></div>
+                    <div class="visual-card tone-3"><h3>Программирование</h3></div>
+                    <div class="visual-card tone-4"><h3>Графический дизайн</h3></div>
+                    <div class="visual-card tone-5"><h3>Разработка на платформе 1С</h3></div>
+                    <div class="visual-card tone-6"><h3>Разработка игр</h3></div>
+                    <div class="visual-card tone-7"><h3>Виртуальная и AR реальность</h3></div>
+                    <div class="visual-card tone-8"><h3>К юбилею колледжа</h3></div>
+                </div>
+            </div>
+            <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+        </section>
+
+        <!-- КРИТЕРИИ И ВОЗРАСТ -->
+        <section class="section-block bg-light">
+            <div class="container">
+                <div class="section-grid-2">
+                    <div class="meta-title">
+                        <h2>Критерии оценки</h2>
+                    </div>
+                    <div class="expertise-grid-clean">
+                        <div class="exp-item">
+                            <h3>· Практическая значимость</h3>
+                            <p>Важность и применимость проекта для реальных организаций и предприятий города и области.</p>
+                        </div>
+                        <div class="exp-item">
+                            <h3>· Самостоятельность</h3>
+                            <p>Глубина самостоятельных исследований и проработки темы творческой группой исполнителей.</p>
+                        </div>
+                        <div class="exp-item">
+                            <h3>· Инструменты</h3>
+                            <p>Степень эффективности и мастерства использования выбранных инструментов разработки и ПО.</p>
+                        </div>
+                        <div class="exp-item">
+                            <h3>· Эстетичность</h3>
+                            <p>Качество визуального и графического оформления проекта, удобство интерфейса.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-grid-2 border-top">
+                    <div class="meta-title">
+                        <h2>Возрастные категории</h2>
+                    </div>
+                    <div class="categories-block">
+                        <div class="cat-card">
+                            <h4>Школы</h4>
+                            <p>Обучающиеся среднего и старшего звена общеобразовательных учреждений.</p>
+                        </div>
+                        <div class="cat-card">
+                            <h4>СПО</h4>
+                            <p>Студенты образовательных учреждений среднего профессионального образования.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+        </section>
+
+        <!-- СРОКИ ПРОВЕДЕНИЯ (TIMELINE) -->
+        <section class="section-block">
+            <div class="container">
+                <div class="section-header-clean">
+                    <h2>Сроки проведения</h2>
+                    <p>Ключевые этапы и даты проведения конкурса в 2027 году</p>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="tl-date">До 31 марта 2027</div>
+                        <div class="tl-content">
+                            <h3>Подача заявок</h3>
+                            <p>Регистрация участников и подача заявки об участии в конкурсе в организационный комитет.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-date">31 марта — 7 апреля</div>
+                        <div class="tl-content">
+                            <h3>Отборочный тур</h3>
+                            <p>Экспертиза проектов. Необходимо подготовить презентацию и описание проекта по установленной схеме.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-date">С 7 апреля</div>
+                        <div class="tl-content">
+                            <h3>Подготовка финалов</h3>
+                            <p>Продолжение работы над проектами, доработка элементов и предоставление окончательного варианта.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-date">15 апреля 2027</div>
+                        <div class="tl-content">
+                            <h3>Итоговая защита и награждение</h3>
+                            <p>Защита работ в Нижегородском экономико-технологическом колледже. Участники награждаются дипломами, победители — грамотами.</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+        </section>
+
+        <!-- НАГРАЖДЕНИЕ -->
+        <section class="section-block bg-light">
+            <div class="container">
+                <div class="section-grid-2">
+                    <div class="meta-title">
+                        <h2>Награждение</h2>
+                    </div>
+                    <div class="meta-text">
+                        <p class="lead-text">Все участники конкурса награждаются официальными дипломами за участие, а победители и призёры в каждой возрастной категории — почётными грамотами и ценными призами.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-more btn-reg-center">Зарегистрироваться</button>
+        </section>
+
+        <!-- КОНТАКТЫ (FOOTER) -->
+        <footer class="section-block contacts-section">
+            <div class="container">
+                <div class="contacts-wrapper">
+                    
+                    <!-- Блок Организатора (Слева) -->
+                    <div class="contacts-main">
+                        <span class="sub">Организатор</span>
+                        <h2>Нижегородский экономико-технологический колледж</h2>
+                        <p class="address">Проспект Ленина, 200, кабинет № 214</p>
+                        
+                        <div class="phones-group">
+                            <p>Тел: <a href="tel:71432">7-14-32</a></p>
+                            <p>Факс: <a href="tel:71994">7-19-94</a></p>
+                            <p>Email: <a href="mailto:atpk-it@yandex.ru" class="mail-link">atpk-it@yandex.ru</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Блок Исполнителя (Справа) -->
+                    <div class="contacts-person">
+                        <span class="sub">Исполнитель</span>
+                        <h3>Стюкова Наталья Викторовна</h3>
+                        <a href="tel:+79049297214" class="personal-phone">+7 904 929-72-14</a>
+                    </div>
+                    <p class="copyright-text">2027 Нижегородский экономико-технологический колледж. Все права защищены.</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ -->
+<div id="register-modal" class="modal-overlay">
+    <div class="modal-content-box">
+        <button class="modal-close-btn" id="close-modal"></button>
+        <h2>Регистрация на конкурс</h2>
+        <p class="modal-sub">Заполните данные, чтобы подать заявку</p>
+        
+        <form id="register-form">
+            <div class="input-group">
+                <label for="user-fio">ФИО участника</label>
+                <input type="text" id="user-fio" placeholder="Иванов Иван Иванович" required>
+            </div>
+            <div class="input-group">
+                <label for="user-group">Учебная группа / Класс</label>
+                <input type="text" id="user-group" placeholder="ИСП-311 или 11-А" required>
+            </div>
+            <button type="submit" class="modal-submit-btn">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>
+
+<!-- ОКНО БЛАГОДАРНОСТИ -->
+<div id="thanks-modal" class="modal-overlay">
+    <div class="modal-content-box thanks-box">
+        <div class="success-icon">✓</div>
+        <h2>Спасибо за регистрацию!</h2>
+        <p>Ваша заявка успешно принята. Удачи в конкурсе проектов!</p>
+        <button class="modal-submit-btn" id="close-thanks">Отлично</button>
+    </div>
+</div>
+
+
+        <!-- ПОДКЛЮЧЕНИЕ ОТДЕЛЬНОГО ФАЙЛА СКРИПТОВ -->
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости — ИТ – НЭТК – 2027</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="news-page">
+
+    <!-- НАВИГАЦИЯ (Один в один как на главной) -->
+    <nav class="top-navbar">
+        <div class="top-logo"><a href="index.html#main-hero">ИТ – НЭТК – 2027</a></div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <ul class="top-nav-links">
+                <li><a href="index.html#main-hero">О конкурсе</a></li>
+                <li><a href="news.html" class="active">Новости</a></li>
+            </ul>
+            <button class="theme-toggle-btn" id="theme-toggle">☀️ Светлая тема</button>
+        </div>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ -->
+    <main class="main-content news-main-padding">
+        <div class="container">
+            
+            <!-- Шапка раздела -->
+            <div class="section-header-clean news-header-space">
+                <h2>Новости конкурса</h2>
+                <p>Актуальные события, изменения в регламенте и анонсы мероприятий «ИТ – НЭТК – 2027»</p>
+            </div>
+
+            <!-- Вертикальная журнальная лента новостей -->
+            <div class="news-vertical-feed">
+                
+                <!-- Новость 1 -->
+                <article class="news-card-horizontal">
+                    <div class="news-image-wrapper">
+                        <img src="its_time.png" alt="Старт конкурса">
+                    </div>
+                    <div class="news-horizontal-content">
+                        <span class="news-date">6 ноября 2026 г.</span>
+                        <h3>Официальный старт регистрации участников</h3>
+                        <p>Организационный комитет Нижегородского экономико-технологического колледжа объявляет о начале приема заявок на окружной конкурс проектов. Напоминаем, что подать документы на участие в ИТ-баттле необходимо до 31 марта 2027 года.</p>
+                        <button class="btn-more btn-reg-center" style="margin: 20px 0 0 0 !important; padding: 12px 32px !important; font-size: 14px !important;">Зарегистрироваться</button>
+
+                    </div>
+                </article>
+
+                <!-- Новость 2 -->
+                <article class="news-card-horizontal">
+                    <div class="news-image-wrapper">
+                        <img src="graf.png" alt="Мастер-классы">
+                    </div>
+                    <div class="news-horizontal-content">
+                        <span class="news-date">15 декабря 2026 г.</span>
+                        <h3>Публикация графика подготовительных мастер-классов</h3>
+                        <p>Для всех зарегистрированных команд на базе НЭТК пройдут бесплатные интенсивы по веб-разработке, программированию и 1С. Преподаватели разберут критерии практической значимости и помогут подготовить презентации.</p>
+                    </div>
+                </article>
+
+                <!-- Новость 3 -->
+                <article class="news-card-horizontal">
+                    <div class="news-image-wrapper">
+                        <img src="hack.png" alt="Новая секция">
+                    </div>
+                    <div class="news-horizontal-content">
+                        <span class="news-date">10 января 2027 г.</span>
+                        <h3>Спецноминация: Цифровые проекты к юбилею колледжа</h3>
+                        <p>Добавлено новое конкурсное направление. Участники могут представить игры, интерактивные карты, виртуальные туры или веб-страницы, посвященные истории, достижениям и преподавательскому составу нашего колледжа.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- КОМПАКТНЫЙ ПОДВАЛ (Как на главной) -->
+    <footer class="contacts-section">
+        <div class="container">
+            <div class="contacts-wrapper">
+                <div class="contacts-main">
+                    <span class="sub">Организатор</span>
+                    <h2>Нижегородский экономико-технологический колледж</h2>
+                    <p class="address">Проспект Ленина, 200, кабинет № 214</p>
+                    <div class="phones-group">
+                        <p>Тел: <a href="tel:71432">7-14-32</a></p>
+                        <p>Факс: <a href="tel:71994">7-19-94</a></p>
+                        <p>Email: <a href="mailto:atpk-it@yandex.ru" class="mail-link">atpk-it@yandex.ru</a></p>
+                    </div>
+                </div>
+                <div class="contacts-person">
+                    <span class="sub">Исполнитель</span>
+                    <h3>Стюкова Наталья Викторовна</h3>
+                    <a href="tel:+79049297214" class="personal-phone">+7 904 929-72-14</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright-text">2027 Нижегородский экономико-технологический колледж. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ -->
+    <div id="register-modal" class="modal-overlay">
+        <div class="modal-content-box">
+            <button class="modal-close-btn" id="close-modal"></button>
+            <h2>Регистрация на конкурс</h2>
+            <p class="modal-sub">Заполните данные, чтобы подать заявку</p>
+            <form id="register-form">
+                <div class="input-group">
+                    <label for="user-fio">ФИО участника</label>
+                    <input type="text" id="user-fio" placeholder="Иванов Иван Иванович" required>
+                </div>
+                <div class="input-group">
+                    <label for="user-group">Учебная группа / Класс</label>
+                    <input type="text" id="user-group" placeholder="ИСП-311 или 11-А" required>
+                </div>
+                <button type="submit" class="modal-submit-btn">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ОКНО БЛАГОДАРНОСТИ -->
+    <div id="thanks-modal" class="modal-overlay">
+        <div class="modal-content-box thanks-box">
+            <div class="success-icon">✓</div>
+            <h2>Спасибо за регистрацию!</h2>
+            <p>Ваша заявка успешно принята. Удачи в конкурсе проектов!</p>
+            <button class="modal-submit-btn" id="close-thanks">Отлично</button>
+        </div>
+    </div>
+
+    <!-- Логика анимации и переключения тем -->
+    <script src="script.js"></script>
+</body>
+</html>
